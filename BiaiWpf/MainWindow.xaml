@@ -1,0 +1,300 @@
+﻿<Window x:Class="BiaiWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BiaiWpf"
+        mc:Ignorable="d"
+        Title="BIAI" Height="720" Width="525">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+                <TextBox Name="SciezkaTextBox" Width="300"/>
+                <Button Content="Przeglądaj" Name="PrzegladajButton" Click="PrzegladajButton_OnClick" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,5,0,0">
+                <Button Content="Ucz sieć" Name="UczSiecButton" Width="100" Click="UczSiecButton_Click" Margin="5,0,0,0"></Button>
+                <Button Content="Zapisz sieć" Name="ZapiszSiecButton" Width="100"  Margin="5,0,0,0" Click="ZapiszSiecButton_Click"></Button>
+                <Button Content="Wczytaj sieć" Name="WczytajSiecButton" Width="100" Margin="5,0,0,0" Click="WczytajSiecButton_Click"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,5,0,0">
+                <TextBlock Text="Lerning Rate"  Width="100" Margin="5,0,0,0"/>
+                <TextBlock Text="Momentum"  Width="100"  Margin="5,0,0,0"/>
+                <TextBlock Text="Liczba epok"  Width="100" Margin="5,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,0,0,0">
+                <TextBox Text="0,001"  Name="LerningRateTextBox" Width="100" Margin="5,0,0,0"></TextBox>
+                <TextBox   Text="0,001"  Name="MomentumTextBox" Width="100" Margin="5,0,0,0"></TextBox>
+                <TextBox   Text="1000"  Name="EpochsTextBox" Width="100" Margin="5,0,0,0"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10,10,10,10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Obecny stan konta"  Margin="0,0,5,0"/>
+                    <ComboBox Name="AccountBalanceComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1. 0"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2. 1-200"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3. >200"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="4. -"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Okres kredytu (miesiące)" Margin="0,0,5,0"/>
+                    <TextBox  Name="DurationTextBox" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Historia kredytowa"  Margin="0,0,5,0"/>
+                    <ComboBox Name="CreditHistoryComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="0. Brak kredytów/Wszystkie spłacone"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="1. Wszystkie kredyty w tym banku spłacone"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2. Wszystkie kredyty do tej pory spłacone należycie"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3. Opóźnienie w spłacaniu"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="4. Zły stan konta/Inne kredyty w tym banku"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Cel"  Margin="0,0,5,0"/>
+                    <ComboBox Name="PurposeComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="0. Samochód(nowy)"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="1. Samochód(używany)"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2. Meble/Wyposażenie"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3. Radio/Telewizor"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="4. Sprzęt AGD"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="5. Naprawy"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="6. Edukacja"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="7. Wakacje"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="8. Przekwalifikowanie"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="9. Biznes"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="10. Inne"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Kwota kredytu (w tysiącach marek)"  Margin="0,0,5,0"/>
+                    <TextBox  Name="CreditAmountTextBox" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Oszczędności"  Margin="0,0,5,0"/>
+                    <ComboBox Name="SavingAccountComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1. 0-100"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2. 100-500"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3. 500-1000"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="4. >1000"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="5. Nieznane/Brak"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Obecne zatrudnienie od"  Margin="0,0,5,0"/>
+                    <ComboBox Name="PresentEmploymentComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1.Niezatrudniony"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2. 0-1 rok"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3. 1-4 lat"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="4. 4-7 lat"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="5. >7 lat"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Procent rat w stusunku do dochodu"  Margin="0,0,5,0"/>
+                    <TextBox  Name="InstallmentRateTextBox" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Status osobowy"  Margin="0,0,5,0"/>
+                    <ComboBox Name="PersonalStatusComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1.Mężczyzna - rozwiedziony/w separacji"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2.Kobieta - rozwiedziona/w separacji/zamężna"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3. Mężczyzna - kawaler"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="4. Mężczyzna - żonaty/wdowiec"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="5. Kobieta - panna"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Współkredytobiorcy /poręczyciele"  Margin="0,0,5,0"/>
+                    <ComboBox Name="OtherDebtorsComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1.Brak"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2.Współwnioskodawca"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3. Poręczyciel"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Lata zamieszkania pod obecnym adresem"  Margin="0,0,5,0"/>
+                    <TextBox  Name="PresentResidenceTextBox" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Własności"  Margin="0,0,5,0"/>
+                    <ComboBox Name="PropertyComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1.Nieruchomość"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2.Jeśli nie: inwestycja w budownictwie/ubezpieczenie na życie"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3.Jeśli nie: samochód lub inne"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="4.Nieznane/brak"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Wiek"  Margin="0,0,5,0"/>
+                    <TextBox  Name="AgeTextBox" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Inne zobowiązania kredytowe"  Margin="0,0,5,0"/>
+                    <ComboBox Name="OtherInstallmentComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1.Bank"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2.Sklepy"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3.Brak"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Dom"  Margin="0,0,5,0"/>
+                    <ComboBox Name="HousingComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1.Wynajmowane"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2.Własne"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3.Darmowe"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Liczba istniejących kredytów w tym banku"  Margin="0,0,5,0"/>
+                    <TextBox  Name="NumberCreditsTextBox" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Praca"  Margin="0,0,5,0"/>
+                    <ComboBox Name="JobComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1.Niezatrudniony/niewykwalifikowany"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2.Niewykwalifikowany - rezydent"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="3.Wykwalifikowany pracownik"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="4.Menedżer/własna działalność/wysoko postawiony"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Liczba osób odpowiedzialnych za utrzymanie"  Margin="0,0,5,0"/>
+                    <TextBox  Name="NumberOfPeopleTextBox" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Telefon"  Margin="0,0,5,0"/>
+                    <ComboBox Name="TelephoneComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1.Brak"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2.Tak, zarejestronwany na siebie"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <TextBlock Text="Cudzoziemiec"  Margin="0,0,5,0"/>
+                    <ComboBox Name="ForeignWorkerComboBox" Width="200">
+                        <ComboBoxItem>
+                            <TextBlock Text="1.Tak"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="2.Nie"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,5,0,0">
+                    <Button Content="Sprawdź" Name="SprawdzButton" Width="95" Click="SprawdzButton_OnClick" Margin="0,10,0,0"></Button>
+                    <Button Content="Wylicz" Name="WyliczButton" Width="95" Margin="10,10,0,0" Click="WyliczButton_Click"></Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
